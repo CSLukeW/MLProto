@@ -1,16 +1,8 @@
-# StockerMake: Modular Prototyping Tool for Stock Market Prediction Models
-
-## Installation
-
-Install using [pip](https://pypi.org/project/StockerMake/) installer.
-
-```bash
-pip install stockermake
-```
+# MLProto: Modular Prototyping Tool for LSTM Machine Learning Models
 
 ## Usage
 
-### [Video Overview](https://www.youtube.com/watch?v=wJASzHNqNXE&t)
+### Video overview coming
 
 ### The StockerMake Script
 
@@ -19,7 +11,8 @@ The StockerMake script combines the Stocker and helper modules into one to creat
 #### Arguments:
     Positional:
         key ---- User's Alpha_Vantage API key
-        symbols ---- Ticker symbols to create models for
+        identifier ---- Ticker symbols to create models for
+        target ---- Column number of target values
 
     Optional:
         -depth ---- number of layers to include in the neural network (def: 1)
@@ -35,51 +28,33 @@ The StockerMake script combines the Stocker and helper modules into one to creat
         --normalize ---- flag deciding whether or not to normalize input data
 
 #### Usage Example:
-    StockerMake APIKEY FORD MSFT --early_stop --plots
+    ProtoMake test.csv test_model --early_stop --plots
 
-The above command will create, train, and evaluate a model for the FORD ticker. It saves a model FORD.h5 in directory ./models/ and input, loss, and prediction graphs in the directory ./plots/ for analysis.
+The above command will create, train, and evaluate a model for the data in test.csv. It saves a model test_model.h5 in directory ./models/ and input, loss, and prediction graphs in the directory ./plots/ for analysis.
 
 ### The Stocker Module
 
 If you would like to use your own data pipelines as inputs, the Stocker and data helper modules can be used separately from the main script.
 
 ```Python
-from Stocker import *
+from MLProto import *
 
 """ Data operations (assign data, pred_data)
 ______________________________________________
 """
 
-stkr = Stocker('FORD', data)
+stkr = Proto(data)
 stkr.train(25, True, True))
 stkr.evaluate()
-stkr.save_model('./models/')
 stkr.predict_data(pred_data)
 ```
 The above code will take prepared data, create a stocker instance for the FORD ticker, train for 25 epochs, save the model to the models folder as FORD.h5 and predict a data point based on the user's prepared prediction data.
 
-### The Helpers module
+### The Data module
 
 This module includes the data operation helper functions used by Stocker.
 
-daily_adjusted() returns a pandas dataframe of historical daily adjusted stock data.
-
 single_step_data takes a full dataset and creates a single-step timeseries dataset from it for input into an LSTM model.
-
-make_dir() is a filepath helper to assist with saving models.
-
-## Coming soon!
-
-Stocker:
-- Support for more layer types
-- Multi-step future models
-- Optimizer customization
-- ~~Customizable past-window (how far back to consider)~~
-
-Helpers:
-- Data for multi-step prediction
-- ~~Data normalization option~~
-- Compact (last 60) data
 
 ## Contributions
 
