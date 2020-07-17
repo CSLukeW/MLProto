@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from . import Stocker
-from . import helpers as helper
+from . import Proto
+from . import Data as helper
 import argparse
 from matplotlib import pyplot
 import pandas

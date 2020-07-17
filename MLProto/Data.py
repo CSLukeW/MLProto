@@ -9,34 +9,11 @@ Coming soon:
     Compact (last 60) data
 """
 
-
-from alpha_vantage.timeseries import TimeSeries
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import os
 from sklearn.preprocessing import MinMaxScaler
-
-def daily_adjusted(symbol, key, compact=True):
-    """ Returns data frame of queried data
-
-        args:
-            symbol -- symbol of desired stock
-            key -- user's API key
-        compact -- True -> last 100 results
-                   False -> all past results
-    """
-
-    # create time series
-    ts = TimeSeries(key=key, output_format='pandas')
-
-    # take last 100 or complete historical as needed
-    if compact:
-        data, _ = ts.get_daily_adjusted(symbol=symbol, outputsize='compact')
-    else:
-        data, _ = ts.get_daily_adjusted(symbol=symbol, outputsize='full')
-
-    return data
 
 def single_step_data(data, target, start, end, history_size, target_size, step, normalize=True):
 

@@ -3,7 +3,7 @@ Author: Luke Williams
 
 License: LGPLv3
 
-Stocker module for easy, modular prototyping of LSTM neural networks. 
+MLProto module for easy, modular prototyping of LSTM neural networks. 
 
 Coming soon:
     Support for more layer types
@@ -25,7 +25,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 from . import helpers as helper
 
-class Stocker:
+class Proto:
     def __init__(self, symbol, data, depth=1, node_counts=[100], batch=50, test_size=.2, loss='mse', learning_rate=.001, inpath=None, normalize=True, past_window=60):
         """ Creating Stocker instance and model
 
