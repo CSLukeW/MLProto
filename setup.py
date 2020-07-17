@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="StockerMake",
+    name="MLProto",
     version="0.0.31",
     author="Luke Williams",
     author_email="williams.luke.2001@gmail.com",
     description="Modular Neural Network Protyping for Stock Market Prediction",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/CSLukeW/StockerMake",
+    url="https://github.com/CSLukeW/MLProto",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -22,7 +22,7 @@ setuptools.setup(
     python_requires='>=3.6',
     entry_points={
         'console_scripts': [
-            'StockerMake = StockerMake.StockerMake:main'
+            'ProtoMake = MLProto.ProtoMake:main'
         ]
     },
     install_requires=[
@@ -77,6 +77,5 @@ setuptools.setup(
         'wrapt==1.12.1',
         'yarl==1.4.2',
         'zipp==3.1.0',
-
     ]
 )
