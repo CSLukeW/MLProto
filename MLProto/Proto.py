@@ -26,11 +26,11 @@ from sklearn.preprocessing import MinMaxScaler
 from . import helpers as helper
 
 class Proto:
-    def __init__(self, symbol, data, depth=1, node_counts=[100], batch=50, test_size=.2, loss='mse', learning_rate=.001, inpath=None, normalize=True, past_window=60):
+    def __init__(self, identifier, data, target, depth=1, node_counts=[100], batch=50, test_size=.2, loss='mse', learning_rate=.001, inpath=None, normalize=True, past_window=60):
         """ Creating Stocker instance and model
 
             Args:
-                symbol ---- ticker symbol of desired stock
+                identifier ---- string identifier for model
                 data ---- full set of training and testing data (split can be specified) (must be dataframe)
 
             Kwargs:
@@ -44,8 +44,9 @@ class Proto:
 
         """
 
+        self.identifier = identifier
         self.batch = batch
-        self.symbol = symbol
+        self.data = data
         self.normalize = normalize
 
         # load model if specified
@@ -61,8 +62,8 @@ class Proto:
         split = int(data_numpy.shape[0]*(1-test_size))
 
         # store data in numpy format given data in dataframe
-        self.train_in, self.train_out = helper.single_step_data(data_numpy, data_numpy[:, 4], 0, split, past_window, 1, 1, self.normalize)
-        self.val_in, self.val_out = helper.single_step_data(data_numpy, data_numpy[:, 4], split, None, past_window, 1, 1, self.normalize)
+        self.train_in, self.train_out = helper.single_step_data(data_numpy, data_numpy[:, target], 0, split, past_window, 1, 1, self.normalize)
+        self.val_in, self.val_out = helper.single_step_data(data_numpy, data_numpy[:, target], split, None, past_window, 1, 1, self.normalize)
 
         print('Constructing model...')
 
@@ -104,7 +105,7 @@ class Proto:
             pyplot.ylabel('Error')
             pyplot.legend()
             pyplot.suptitle('Error')
-            pyplot.savefig(helper.make_dir('./plots/' + self.symbol) + '/error.png')
+            pyplot.savefig(helper.make_dir('./plots/' + self.identifier) + '/error.png')
             print()
 
     def evaluate(self, data=None):
