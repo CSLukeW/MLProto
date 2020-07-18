@@ -32,9 +32,9 @@ The ProtoMake script combines the Proto and Data modules into one to create an e
 
 The above command will create, train, and evaluate a model for the data in test.csv. It saves a model test_model.h5 in directory ./models/ and input, loss, and prediction graphs in the directory ./plots/ for analysis.
 
-### The Stocker Module
+### The Proto Module
 
-If you would like to use your own data pipelines as inputs, the Stocker and data helper modules can be used separately from the main script.
+The Proto module contains the core functionality of the machine-learning portion of the package. It holds all of the model manipulation methods.
 
 ```Python
 from MLProto import *
@@ -43,22 +43,22 @@ from MLProto import *
 ______________________________________________
 """
 
-stkr = Proto(data)
+stkr = Proto('test', data)
 stkr.train(25, True, True))
 stkr.evaluate()
 stkr.predict_data(pred_data)
 ```
-The above code will take prepared data, create a stocker instance for the FORD ticker, train for 25 epochs, save the model to the models folder as FORD.h5 and predict a data point based on the user's prepared prediction data.
+The above code will take prepared data, create a Proto instance "test" for the data given, train for 25 epochs, save the model to the models folder as train.h5 and predict data points based on the user's prepared prediction data.
 
 ### The Data module
 
 This module includes the data operation helper functions used by Stocker.
 
-single_step_data takes a full dataset and creates a single-step timeseries dataset from it for input into an LSTM model.
+single_step_data takes a full dataset and creates a timeseries dataset from it for input into an LSTM model.
 
 ## Contributions
 
-Please send pull requests! I am a full-time student, so development and support for Stocker will likely be slow with me working alone. I welcome any and all efforts to contribute!
+Please send pull requests! I am a full-time student, so development and support for MLProto will likely be slow with me working alone. I welcome any and all efforts to contribute!
 
 ## License
 
