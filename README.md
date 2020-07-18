@@ -8,7 +8,8 @@
 
 The ProtoMake script combines the Proto and Data modules into one to create an easy, convenient, and modular neural network prototyping tool for LSTM machine learning models. The script will take the user's desired parameters and create, train, and evaluate a model fitting said parameters. This allows the user to quickly analyze model prototypes, make adjustments, and iterate on model designs.
 
-#### Arguments:
+#### Arguments
+
     Positional:
         key ---- User's Alpha_Vantage API key
         identifier ---- Ticker symbols to create models for
@@ -27,7 +28,8 @@ The ProtoMake script combines the Proto and Data modules into one to create an e
         --plots ---- flag deciding whether to save loss, input, and prediction graphs
         --normalize ---- flag deciding whether or not to normalize input data
 
-#### Usage Example:
+#### Usage Example
+
     ProtoMake test.csv test_model --early_stop --plots
 
 The above command will create, train, and evaluate a model for the data in test.csv. It saves a model test_model.h5 in directory ./models/ and input, loss, and prediction graphs in the directory ./plots/ for analysis.
@@ -36,18 +38,19 @@ The above command will create, train, and evaluate a model for the data in test.
 
 The Proto module contains the core functionality of the machine-learning portion of the package. It holds all of the model manipulation methods.
 
-```Python
-from MLProto import *
+    ``` Python
+    from MLProto import *
 
-""" Data operations (assign data, pred_data)
-______________________________________________
-"""
+    """ Data operations (assign data, pred_data)
+    ______________________________________________
+    """
 
-stkr = Proto('test', data)
-stkr.train(25, True, True))
-stkr.evaluate()
-stkr.predict_data(pred_data)
-```
+    stkr = Proto('test', data)
+    stkr.train(25, True, True))
+    stkr.evaluate()
+    stkr.predict_data(pred_data)
+    ```
+
 The above code will take prepared data, create a Proto instance "test" for the data given, train for 25 epochs, save the model to the models folder as train.h5 and predict data points based on the user's prepared prediction data.
 
 ### The Data module
