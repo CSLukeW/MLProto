@@ -143,4 +143,4 @@ key.txt
 # cache
 /__pycache__/
 
-*.txt
+key.txt
