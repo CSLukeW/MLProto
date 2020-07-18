@@ -52,7 +52,7 @@ The above code will take prepared data, create a Proto instance "test" for the d
 
 ### The Data module
 
-This module includes the data operation helper functions used by Stocker.
+This module includes the data operation helper functions used by MLProto.
 
 single_step_data takes a full dataset and creates a timeseries dataset from it for input into an LSTM model.
 
