@@ -15,6 +15,7 @@ import tensorflow as tf
 import os
 from sklearn.preprocessing import MinMaxScaler
 
+
 def single_step_data(data, target, start, end, history_size, target_size, step, normalize=True):
 
     """

@@ -47,7 +47,7 @@ def main():
 
     predictions = model.predict_data(model.val_in)
 
-    standard_numpy = hist[int(hist.shape[0]*(1-parse.test_size)):]['5. adjusted close'].to_numpy()
+    standard_numpy = hist[int(hist.shape[0]*(1-parse.test_size)):]['4. close'].to_numpy()
 
     if parse.plots:
         pyplot.figure()

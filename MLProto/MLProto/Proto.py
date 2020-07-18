@@ -23,7 +23,7 @@ from matplotlib import pyplot
 import os
 from sklearn.preprocessing import MinMaxScaler
 
-from . import helpers as helper
+from . import Data as helper
 
 class Proto:
     def __init__(self, identifier, data, target, depth=1, node_counts=[100], batch=50, test_size=.2, loss='mse', learning_rate=.001, inpath=None, normalize=True, past_window=60):
@@ -55,7 +55,7 @@ class Proto:
             return
 
         # assign optimizer (support for optimizer customization coming)
-        optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+        optimizer = tf.keras.optimizers.Adam(learning_rate=.0001)
 
         # swap data to numpy for easier manipulation
         data_numpy = data.to_numpy()
@@ -131,7 +131,7 @@ class Proto:
         if not os.path.exists(dir):
             os.mkdir(dir)
 
-        dir += self.symbol+'.h5'
+        dir += self.identifier+'.h5'
 
         self.model.save(dir)
 
