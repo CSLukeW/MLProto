@@ -76,8 +76,11 @@ def main():
         model.save_model()
 
         predictions = model.predict_data(model.val_in)
+        #print(predictions)
+        #print(predictions.shape)
 
-        standard_numpy = hist[int(hist.shape[0]*(1-parse.test_size)):]['4. close'].to_numpy()
+        standard_numpy = hist[int(hist.shape[0]*(1-parse.test_size))+60:]['4. close'].to_numpy()
+        # print(standard_numpy.shape)
 
         if parse.plots:
             pyplot.figure()

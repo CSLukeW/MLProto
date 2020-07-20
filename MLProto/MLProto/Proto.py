@@ -69,12 +69,14 @@ class Proto:
 
         self.model = tf.keras.Sequential()
         # build model based on user inputs
-        for i in range(depth):
+        for i in range(depth-1):
             self.model.add(tf.keras.layers.LSTM(node_counts[i], activation='tanh', recurrent_activation='sigmoid', \
                                                     input_shape=self.train_in.shape[-2:], return_sequences=True, name='LSTM'+str(i)))
             self.model.add(tf.keras.layers.Dropout(.3))
 
-        self.model.add(tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(1)))
+        self.model.add(tf.keras.layers.LSTM(node_counts[-1], activation='tanh', recurrent_activation='sigmoid', \
+                                                    input_shape=self.train_in.shape[-2:], name='LSTM'+str(depth-1)))
+        self.model.add(tf.keras.layers.Dense(1))
         self.model.compile(loss=loss, optimizer=optimizer)
         print('Model Constructed!\n')
         print(self.model.summary())
