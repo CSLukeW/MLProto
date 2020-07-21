@@ -2,7 +2,7 @@ import setuptools
 
 with open('requirements.txt', 'r', encoding='utf-16-le') as requirements:
     requires = [x.strip() for x in requirements.readlines()]
-    requires[0] = requires[0][2:]
+    requires[0] = requires[0][1:]
 
 print(requires)
 
@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="MLProto",
-    version="0.1.0",
+    version="0.1.1",
     author="Luke Williams",
     author_email="williams.luke.2001@gmail.com",
     description="Modular Neural Network Protyping for Stock Market Prediction",
