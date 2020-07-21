@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="MLProto",
-    version="0.1.1",
+    version="0.1.2",
     author="Luke Williams",
     author_email="williams.luke.2001@gmail.com",
     description="Modular Neural Network Protyping for Stock Market Prediction",
