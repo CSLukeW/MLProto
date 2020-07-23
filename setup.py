@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="MLProto",
-    version="0.1.0",
+    version="0.1.4",
     author="Luke Williams",
     author_email="williams.luke.2001@gmail.com",
     description="Modular Neural Network Protyping for Stock Market Prediction",
@@ -28,7 +28,7 @@ setuptools.setup(
     python_requires='>=3.6',
     entry_points={
         'console_scripts': [
-            'ProtoMake = MLProto.ProtoMake:main'
+            'ProtoMake = MLProto.MLProto.ProtoMake:main'
         ]
     },
     install_requires=requires
