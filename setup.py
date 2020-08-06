@@ -9,9 +9,12 @@ print(requires)
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+print("PACKAGES")
+print(setuptools.find_packages())
+
 setuptools.setup(
     name="MLProto",
-    version="0.1.5",
+    version="0.2.0",
     author="Luke Williams",
     author_email="williams.luke.2001@gmail.com",
     description="Modular Neural Network Protyping for Stock Market Prediction",
